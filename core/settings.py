@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'db_file_storage',
     'knox',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -51,6 +52,7 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -58,6 +60,18 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',  # Whitenoise Middleware
 ]
+
+# If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+# CORS_ORIGIN_WHITELIST = [
+#     'http://localhost:8000',
+#     'http://localhost:3000',
+# ]  # If this is used, then not need to use `CORS_ORIGIN_ALLOW_ALL = True`
+# CORS_ORIGIN_REGEX_WHITELIST = [
+#     'http://localhost:8000',
+#     'http://localhost:3000',
+# ]
 
 ROOT_URLCONF = 'core.urls'
 
