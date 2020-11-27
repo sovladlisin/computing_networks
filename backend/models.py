@@ -25,7 +25,9 @@ class Markup_Person(models.Model):
     start = models.IntegerField()
     end = models.IntegerField()
     list = models.ForeignKey(List, blank=False, null=False,
-                             related_name='markup_person', on_delete=models.CASCADE)
+                             related_name='markup_person_list', on_delete=models.CASCADE)
+    person = models.ForeignKey(Person, blank=True, null=True,
+                               related_name='markup_person_person', on_delete=models.CASCADE)
 
 
 class Markup_System(models.Model):
@@ -33,3 +35,5 @@ class Markup_System(models.Model):
     end = models.IntegerField()
     list = models.ForeignKey(List, blank=False, null=False,
                              related_name='markup_system', on_delete=models.CASCADE)
+    system = models.ForeignKey(System, blank=True, null=True,
+                               related_name='markup_system', on_delete=models.CASCADE)
